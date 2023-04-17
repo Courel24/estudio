@@ -10,7 +10,7 @@ public class Prueba {
         }
      */
 
-    //inyección de dependencia a través de método
+    //inyección de dependencia a travéss de método
     public void hacerAlgoConInyeccion(ClaseCliente cliente) {
         System.out.println(cliente.obtenerSaludo());
     }
