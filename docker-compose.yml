@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  mysqlocal:
+    image: mysql:latest #descargarla
+    container_name: mysqlocal
+    ports:
+      - "3306:3306"
+    volumes:
+      - data-controlT:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: library
+      MYSQL_ROOT_PASSWORD: pass
+    networks:
+      - controlT
+  api:
+    container_name: example-rest-api
+    image: danieludea28/api-recurzo-confi
+    #build: CREO LA IMAGEN DESDE UN DOCKERFILE
+     # context: ./
+      #dockerfile: ./Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - controlT
+    environment:
+      MYSQL_HOST: mysqlocal
+    restart: always
+    depends_on:
+      - mysqlocal
+networks:
+  controlT:
+volumes:
+  data-controlT:
+    name: data-controlT
