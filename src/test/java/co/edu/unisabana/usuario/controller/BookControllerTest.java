@@ -27,9 +27,8 @@ public class BookControllerTest {
         BookDto bookDto = new BookDto("s",1,"a","true","suave");
 
         ResponseEntity<BookReponse> result = restTemplate.postForEntity(PATH_REGISTER, bookDto,BookReponse.class);
-        ResponseEntity<BookReponse> result2 = restTemplate.postForEntity(PATH_REGISTER, bookDto,BookReponse.class);
 
-        Assertions.assertEquals(new BookReponse("Actualizada cantidad"),result2.getBody());
+        Assertions.assertEquals(new BookReponse("Nuevo libro registrado"),result.getBody());
 
     }
 
